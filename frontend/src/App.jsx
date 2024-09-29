@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/register';
 import Login from './components/login';
-import Home from './components/Home'; // Import the Home component
+import Home from './components/home'; // Import the Home component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
