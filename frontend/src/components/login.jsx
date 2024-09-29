@@ -15,7 +15,7 @@ function Login({ onLoginSuccess }) { // Accept onLoginSuccess as prop
         console.log(result);
         if (result.data.user) {
           onLoginSuccess(result.data.user); // Call onLoginSuccess with user data
-          navigate('/home.jsx'); // Redirect to home
+          navigate('/home'); // Redirect to home
         }
       })
       .catch(err => console.log(err));
