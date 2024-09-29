@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Register from "./Register"; // Import your Register component
-import Login from "./Login"; // Import your Login component
+import Register from "./register"; // Import your Register component
+import Login from "./login"; // Import your Login component
 
 function App() {
     return (
