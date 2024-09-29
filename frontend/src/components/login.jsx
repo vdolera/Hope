@@ -9,8 +9,18 @@ function Login() {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios.post('https://hope-server-ten.vercel.app/login', { email, password })
-      .then(result => console.log(result))
-      .catch(err => console.log(err));
+    .then(result => {
+      console.log(result);
+      if (result.data.user) {
+        alert('Login successful!'); // Display alert after successful login
+        onLoginSuccess(result.data.user); // Call onLoginSuccess with user data
+        navigate('/home'); // Redirect to home
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      alert('Login failed, please check your credentials.'); // Alert if login fails
+    });
   };
 
   return (
