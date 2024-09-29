@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ onLoginSuccess }) { // Accept onLoginSuccess as prop
+function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -12,13 +12,16 @@ function Login({ onLoginSuccess }) { // Accept onLoginSuccess as prop
     e.preventDefault();
     axios.post('https://hope-server-ten.vercel.app/login', { email, password })
       .then(result => {
-        console.log(result);
         if (result.data.user) {
+          alert('Login successful!'); // Notify the user
           onLoginSuccess(result.data.user); // Call onLoginSuccess with user data
           navigate('/home'); // Redirect to home
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        alert('Login failed, please check your credentials.');
+      });
   };
 
   return (
