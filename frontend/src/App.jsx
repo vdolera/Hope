@@ -1,19 +1,16 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Register from "./components/register"; // Import your Register component
-import Login from "./components/login"; // Import your Login component
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Change here
+import Register from "./components/register"; // Ensure the casing matches
+import Login from "./components/login"; // Ensure the casing matches
 
-function App() {
+const App = () => {
     return (
         <Router>
-            <Switch>
-                <Route path="/register" component={Register} />
-                <Route path="/login" component={Login} />
-                <Route path="/" exact>
-                    <Redirect to="/login" /> {/* Default redirect to login */}
-                </Route>
-            </Switch>
+            <Routes> {/* Use Routes instead of Switch */}
+                <Route path="/register" element={<Register />} /> {/* New syntax */}
+                <Route path="/login" element={<Login />} /> {/* New syntax */}
+            </Routes>
         </Router>
     );
-}
+};
 
 export default App;
