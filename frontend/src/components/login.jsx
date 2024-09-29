@@ -1,27 +1,16 @@
 // src/components/Login.js
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-function Login({ onLoginSuccess }) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios.post('https://hope-server-ten.vercel.app/login', { email, password })
-      .then(result => {
-        if (result.data.user) {
-          alert('Login successful!'); // Notify the user
-          onLoginSuccess(result.data.user); // Call onLoginSuccess with user data
-          navigate('/home'); // Redirect to home
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        alert('Login failed, please check your credentials.');
-      });
+      .then(result => console.log(result))
+      .catch(err => console.log(err));
   };
 
   return (
