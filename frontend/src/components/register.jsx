@@ -1,59 +1,60 @@
-// src/components/Register.js
-import { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link
 
-function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Register = () => {
+    const [name, setName] = useState(""); // Ensure this is used
+    const [email, setEmail] = useState(""); // Ensure this is used
+    const [password, setPassword] = useState(""); // Ensure this is used
 
-  const handleRegisterSubmit = (e) => {
-    e.preventDefault();
-    axios.post('https://hope-server-ten.vercel.app/register', { name, email, password })
-      .then(result => console.log(result))
-      .catch(err => console.log(err));
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post('https://hope-server-ten.vercel.app/register', { name, email, password })
+            .then(result => {
+                console.log(result); // Log result or handle as needed
+            })
+            .catch(err => {
+                console.log(err); // Handle errors
+            });
+    };
 
-  return (
-    <div className="bg-white p-3 rounded w-25">
-      <h2>Register</h2>
-      <form onSubmit={handleRegisterSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name"><strong>Name</strong></label>
-          <input
-            type="text"
-            placeholder="Enter Name"
-            autoComplete="off"
-            name="name"
-            className="form-control rounded-0"
-            onChange={(e) => setName(e.target.value)}
-          />
+    return (
+        <div>
+            <h2>Register</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        value={name} // Bind the input value to state
+                        onChange={(e) => setName(e.target.value)} // Update state on change
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        value={email} // Bind the input value to state
+                        onChange={(e) => setEmail(e.target.value)} // Update state on change
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input
+                        type="password"
+                        value={password} // Bind the input value to state
+                        onChange={(e) => setPassword(e.target.value)} // Update state on change
+                        required
+                    />
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <Link to="/login">Login</Link></p>
         </div>
-        <div className="mb-3">
-          <label htmlFor="email"><strong>Email</strong></label>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            autoComplete="off"
-            name="email"
-            className="form-control rounded-0"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password"><strong>Password</strong></label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            className="form-control rounded-0"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
-      </form>
-    </div>
-  );
-}
+    );
+};
 
 export default Register;
