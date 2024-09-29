@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Register from './components/Register';
-import Login from './components/Login';
+import Register from './components/register';
+import Login from './components/login';
 
 function App() {
   const [isRegister, setIsRegister] = useState(true);  // Toggle between Register and Login
