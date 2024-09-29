@@ -1,16 +1,27 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Change here
-import Register from "./components/register"; // Ensure the casing matches
-import Login from "./components/login"; // Ensure the casing matches
+// src/App.js
+import { useState } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Register from './components/register';
+import Login from './components/login';
 
-const App = () => {
-    return (
-        <Router>
-            <Routes> {/* Use Routes instead of Switch */}
-                <Route path="/register" element={<Register />} /> {/* New syntax */}
-                <Route path="/login" element={<Login />} /> {/* New syntax */}
-            </Routes>
-        </Router>
-    );
-};
+function App() {
+  const [isRegister, setIsRegister] = useState(true);  // Toggle between Register and Login
+
+  return (
+    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
+      {isRegister ? <Register /> : <Login />}
+      <div className="text-center mt-3">
+        <p>{isRegister ? 'Already have an account?' : "Don't have an account?"}</p>
+        <button
+          className="btn btn-default border bg-light rounded-0 text-decoration-none"
+          onClick={() => setIsRegister(!isRegister)}
+        >
+          {isRegister ? 'Login' : 'Register'}
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default App;
