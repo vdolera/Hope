@@ -22,7 +22,7 @@ mongoose.connect('mongodb+srv://vdolera:Integ2@imsu.pjwjc.mongodb.net/?retryWrit
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
-// Root Route
+// Server Status
 app.get("/", (req, res) => {
     res.json("Server Running");
 });
