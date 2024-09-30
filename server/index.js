@@ -6,8 +6,8 @@ const RegisterModel = require('./models/Register');
 
 const app = express();
 app.use(cors({
-    origin: ["https://vyv-imsu-client.vercel.app", 
-             "https://vyv-imsu-client.vercel.app/register"
+    origin: ["https://imsu-dummy-client.vercel.app/", 
+             "https://imsu-dummy-client.vercel.app/register"
 ],
     methods: ["POST", "GET"],
     credentials: true
