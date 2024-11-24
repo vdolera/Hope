@@ -9,9 +9,10 @@ const RegisterModel = require('./models/Register');
 
 const app = express();
 app.use(cors({
-    origin: ["https://vyv-imsu-client.vercel.app", 
-             "https://vyv-imsu-client.vercel.app/register",
-             "http://localhost:4173"
+    origin: ["https://vyv-imsu.vercel.app",
+             "https://vyv-imsu.vercel.app/register",
+             "http://localhost:5173",
+             "http://localhost:5173/register"
 ],
     methods: ["POST", "GET"],
     credentials: true
